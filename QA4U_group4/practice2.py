@@ -1,3 +1,5 @@
+pip install jijmodeling
+
 import numpy as np
 import streamlit as st
 import jijmodeling as jm
