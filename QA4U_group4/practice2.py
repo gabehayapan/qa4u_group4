@@ -5,6 +5,32 @@ import jijmodeling_transpiler as jmt
 from openjij import SQASampler
 sampler = SQASampler()
 
+st.set_page_config(page_title="味の調整アプリ", layout="centered")
+
+# アプリのタイトル
+st.title("🎨 新しい味開発アプリ")
+
+# アプリの説明
+st.markdown("""
+このアプリは、入力された料理の味をベースにして、  
+全く異なる味をさまざまな調味料を組み合わせることにより実現します。  
+""")
+
+# 調味料一覧（グレー背景で表示）
+seasoning_names = [
+    "醤油", "みりん", "塩", "酒", "酢", "だし", "ごま油", "オリーブオイル",
+    "砂糖", "マヨネーズ", "ソース", "スパイス", "豆板醤", "バター", "カレー粉"
+]
+
+seasoning_list_str = " | ".join(seasoning_names)
+st.markdown(
+    f'<div style="background-color: #f0f0f0; padding: 10px; border-radius: 10px; font-weight: bold;">'
+    f'使用可能な調味料: {seasoning_list_str}'
+    f'</div>',
+    unsafe_allow_html=True
+)
+
+st.markdown("<br>", unsafe_allow_html=True)
 
 #使用する調味料
 seasoning_names = [
@@ -59,7 +85,7 @@ base_dish_flavor = np.array(dish_flavor_profiles[selected_dish])
 
 num_seasonings = st.slider("使う調味料の数(※この通りになるとは限りません。値はあくまで目安です。)", 1, len(seasoning_names), 1)
 
-if st.button("違う味を楽しむ"):
+if st.button("何が出るかな？"):
   N = len(seasoning)
   M = 6
   unit = []
