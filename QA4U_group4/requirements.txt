@@ -1,0 +1,5 @@
+streamlit
+numpy
+jijmodeling
+jijmodeling_transpiler
+openjij
